@@ -1,22 +1,31 @@
 const searchBox = document.querySelector("#search")
 const searchButton = document.querySelector("#searchbutton")
 const results = document.querySelector(".container")
+const profileElement = document.querySelector(".profile")
+const audioBox = document.querySelector(".audio")
 
 searchButton.addEventListener("click", search)
 
+function playSong(url) {
+    console.log(url)
+}
+
 function search() {
+    results.innerHTML = "";
     const searchInput = searchBox.value;
 
     fetch(`https://itunes.apple.com/search?term='${searchInput}`)
         .then((response) => response.json())
         .then((data) => {
         console.log(data)  
-    
+
         for (let song of data.results) {
-            //profile container
+            //profile container and function to grab preview URL
             let profileElement = document.createElement('div')
             profileElement.classList.add("profile")
-
+            profileElement.addEventListener("click", (e) => {
+                playSong(song.previewUrl)
+                })
             //song name
             let trackNameElement = document.createElement('div')
             trackNameElement.classList.add(".trackname")
@@ -34,13 +43,10 @@ function search() {
             artworkElement.src = song.artworkUrl60
             profileElement.appendChild(artworkElement)
 
-            //audio file
-            let previewElement = document.createElement('audio')
-            previewElement.src = song.previewUrl
-            profileElement.appendChild(previewElement) 
-            
             results.appendChild(profileElement)
-        }
+            }
         })
 }
+
+
 
