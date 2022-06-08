@@ -1,9 +1,12 @@
 const form = document.querySelector("#form")
 const searchBox = document.querySelector("#searchbox")
+const searchButton = document.querySelector("#searchbutton")
 const results = document.querySelector("#results")
 const profileElement = document.querySelector(".profile")
 const audioBox = document.querySelector(".audio")
 
+// searchButton.addEventListener("click", search)
+// searchBox.addEventListener("change", search) 
 form.addEventListener("submit", search)
 
 // grabbing song url from fetch request and assigning it to audio source
@@ -14,22 +17,22 @@ function playSong(url) {
     }, 1000)
 }
 
-function search() {
+function search(e) {
+    e.preventDefault()
     results.innerHTML = "";
     const searchInput = searchBox.value;
 
     fetch(`https://itunes.apple.com/search?term='${searchInput}&entity=song`)
         .then((response) => response.json())
         .then((data) => {
-        console.log(data)  
+        console.log(data)
+        if (data.results.length === 0) {
+            let noResultsElement = document.createElement('div')
+            noResultsElement.classList.add(".noResults")
+            noResultsElement.innerText = "Sorry, no results. Please search again!"
+            results.appendChild(noResultsElement)
+        }
         for (let song of data.results) {
-            if (data.resultCount === 0) {
-                let noResultsElement = document.createElement('div')
-                noResultsElement.classList.add(".noResults")
-                noResultsElement.innerText = "Sorry, no results. Please search again!"
-                results.appendChild(noResultsElement)
-            } else {
-            //profile container and function to grab preview URL
                 let profileElement = document.createElement('div')
                 profileElement.classList.add("profile")
                 profileElement.addEventListener("click", (e) => {
@@ -60,10 +63,11 @@ function search() {
 
                 results.appendChild(profileElement)                
                 }            
-            }
+            
         })
         .catch(err => {
-            alert("Server side error. Please try again!");
+            console.log(err)
+            // alert("Server side error. Please try again!");
         })
 }
 
