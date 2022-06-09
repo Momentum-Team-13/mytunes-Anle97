@@ -4,6 +4,7 @@ const searchButton = document.querySelector("#searchbutton")
 const results = document.querySelector("#results")
 const profileElement = document.querySelector(".profile")
 const audioBox = document.querySelector(".audio")
+const nowPlaying = document.querySelector("#nowPlaying")
 
 // searchButton.addEventListener("click", search)
 // searchBox.addEventListener("change", search) 
@@ -37,6 +38,7 @@ function search(e) {
                 profileElement.classList.add("profile")
                 profileElement.addEventListener("click", (e) => {
                     playSong(song.previewUrl)
+                    nowPlaying.innerText = `Now Playing: ${song.trackName} by ` + `${song.artistName}`
                     })
                 //song name
                 let trackNameElement = document.createElement('div')

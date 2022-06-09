@@ -32,8 +32,15 @@ input {
     height: 275px;
     margin: 2px;
     text-align: center;
+    cursor: pointer;
 }
 img {
     width: 75%;
+}
+
+#nowPlaying {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
 }
 
