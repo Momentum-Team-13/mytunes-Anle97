@@ -4,8 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="main.js" defer></script>
+  <link rel="stylesheet" href="main.css">
   <title>Music Search</title>
 </head>
 <body>
+  <h1>MyTunes Music Previews</h1>
+
+    <form id="form">
+      <input id="searchbox" minlength = "1" autocomplete = "off" required placeholder="Search for your favorite music here!">
+
+      <button id="searchbutton">Search</button>
+    </form>
+    <div id="nowPlaying""></div>
+    <div class = "audiobox">
+      <audio controls class="audio">
+        <source src="">
+      </audio>
+    </div>
+
+    <div id="results"></div>
+
 </body>
 </html>

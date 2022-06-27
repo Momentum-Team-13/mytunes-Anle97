@@ -1,0 +1,46 @@
+h1 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    width: 250px;
+}
+
+.audiobox {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#results {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile {
+    border: 2px solid black;
+    width: 200px;
+    height: 275px;
+    margin: 2px;
+    text-align: center;
+    cursor: pointer;
+}
+img {
+    width: 75%;
+}
+
+#nowPlaying {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
